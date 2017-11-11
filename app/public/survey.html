@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Friend Finder | Personality Survey</title>
+
+	<!-- Bootstrap -->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container-fluid">
+	<div class="jumbotron">
+		<h1>Personality and Other Important Questions</h1><br>
+		<hr>
+		<form method="POST" action="/api/friendsMW">
+
+			<h3><strong>About Me</strong></h3>
+			<fieldset class="form-group">
+				<label for="name">Name (Required, but can use Nickname)</label>
+				<input type="text" class="form-control" placeholder="Your Name" id="name" name="name" required>
+			</fieldset>
+
+			<fieldset class="form-group">
+				<label for="photo">Photo Image (Required)</label>
+				<input type="text" class="form-control" placeholder="Paste a nice picture URL here!" id="photo" name="photo" required>
+			</fieldset>
+			<hr>
+
+			<h4><strong>Question 1:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionOne">I'm a city person (strongly disagree means you are a country person)</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionOne" name="scores[0]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 2:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionTwo">I'm a beach person (strongly disagree puts you in the mountains</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionTwo" name="scores[1]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 3:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionThree">I enjoy traveling abroad.</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionThree" name="scores[2]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 4:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionFour">I live a balanced life that includes money making, exercise, time those important to me, and personal time.</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionFour" name="scores[3]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 5:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionFive">I love exploring variety in my food.</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionFive" name="scores[4]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 6:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionSix">I don't like to push myself too hard.</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionSix" name="scores[5]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 7:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionSeven">Religion rules my life (the stronger you disagree the more spiritually flexible you are).</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionSeven" name="scores[6]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 8:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionEight">I'm looking for a marriage partner.</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionEight" name="scores[7]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 9:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionNine">I enjoy studying and learning (the stronger you disagree the more extreme party animal you become).</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionNine" name="scores[8]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset>
+
+			<h4><strong>Question 10:</strong></h4>
+			<fieldset class="form-group">
+				<label for="questionTen">I'm a fashionista.</label>
+				<br>
+				<div class="col-md-4">
+					<select class="form-control" id="questionTen" name="scores[9]">
+						<option>1 (Strongly Disagree)</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5 (Strongly Agree)</option>
+					</select>
+				</div>
+			</fieldset><br>
+			<input type="submit" class="btn btn-primary" value="Request Friend" id="submit">
+		</form>
+	</div>
+	<hr>
+	<a href="/api/friends">List of Potential Friends</a> 
+</div>
+
+
+<div id="matchModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">X</button>
+				<h2 class="modal-title">We recommend that you try your luck with:</h2>
+			</div>
+			<div class="modal-body">
+				<h2 id="matchName"></h2>
+				<img id="matchImage" src="https://pbs.twimg.com/media/B8p6rMJIAAAQNig.jpg" width=500px alt="Your Match">
+			</div>
+		</div>
+	</div>
+</div>
+			
+
+<!--Import Jquery-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+	$('#submit').on("click", function() {
+		var userInput = {
+			name: $('#name').val().trim(),
+			photo: $('#photo').val().trim(),
+			scores: [$('#questionOne').val().trim(), $('#questionTwo').val().trim(), $('#questionThree').val().trim(), $('#questionFour').val().trim(), $('#questionFive').val().trim(), $('#questionSix').val().trim(), $('#questionSeven').val().trim(), $('#questionEight').val().trim(), $('#questionNine').val().trim(), $('#questionTen').val().trim()]
+		}
+		var currentURL = window.location.origin;
+		$.post(currentURL + '/api/friends', userInput, function(data) {
+			$("#matchName").text(data.name);
+			$("#matchImage").attr("src", data.photo);
+			$("#matchModal").modal('toggle');
+		});
+		return false;
+	});
+</script>
+
+</body>
+</html>
