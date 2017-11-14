@@ -6,6 +6,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 
+var minify = require('express-minify');
+var compression = require('compression')
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -19,6 +21,11 @@ var app = express();
 // Set dynamic port first..
 var PORT = process.env.PORT || 3000;
 
+
+app.use(express.static(path.join(__dirname, 'static')));
+//app.use(express.static('static'));
+
+
 // ==============================================================================
 // INSTRUCT THE SERVER "app" TO USE VARIOUS RESOURCES LIKE MIDDLEWARE AND
 // SERVER API ROUTE DEFINITIONS 
@@ -31,8 +38,7 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));//true/false kakunin shinai to..
 app.use(bodyParser.json());
 app.use(bodyParser.text());
-// koko ni..
-app.use(express.static('app'));
+
 
 // ROUTES
 require('./app/routing/apiRoutes.js')(app); 
