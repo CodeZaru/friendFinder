@@ -216,7 +216,7 @@
 			scores: [$('#questionOne').val().trim(), $('#questionTwo').val().trim(), $('#questionThree').val().trim(), $('#questionFour').val().trim(), $('#questionFive').val().trim(), $('#questionSix').val().trim(), $('#questionSeven').val().trim(), $('#questionEight').val().trim(), $('#questionNine').val().trim(), $('#questionTen').val().trim()]
 		}
 		var currentURL = window.location.origin;
-		$.post(currentURL + '/api/friends', userInput, function(data) {
+		$.post(currentURL + '/api/friendsMW', userInput, function(data) {
 			$("#matchName").text(data.name);
 			$("#matchImage").attr("src", data.photo);
 			$("#matchModal").modal('toggle');
