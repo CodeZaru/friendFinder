@@ -184,7 +184,7 @@
 	</div>
 	<hr>
 	<a href="/api/friendsMW">List of Potential Friends</a> 
-</div>
+</div><!--the server goes to its ROUTE resource file and sees what to do with a request to this URL path-->
 
 
 <div id="matchModal" class="modal fade" role="dialog">
@@ -215,6 +215,9 @@
 			photo: $('#photo').val().trim(),
 			scores: [$('#questionOne').val().trim(), $('#questionTwo').val().trim(), $('#questionThree').val().trim(), $('#questionFour').val().trim(), $('#questionFive').val().trim(), $('#questionSix').val().trim(), $('#questionSeven').val().trim(), $('#questionEight').val().trim(), $('#questionNine').val().trim(), $('#questionTen').val().trim()]
 		}
+//the server goes to its ROUTE resource file and sees what to do with a request to this URL path
+//when the http method is a POST (like the .post below, in addition it provides userInput variable
+//and binds the "data" returned to the various elements of the modal window.)
 		var currentURL = window.location.origin;
 		$.post(currentURL + '/api/friendsMW', userInput, function(data) {
 			$("#matchName").text(data.name);

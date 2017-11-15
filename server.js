@@ -39,7 +39,12 @@ app.use(bodyParser.urlencoded({ extended: true }));//true/false kakunin shinai t
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 
-
+// ================================================================================
+// ROUTER
+// The below points our server to a series of "route" files.
+// These routes give our server a "map" of how to respond when users visit or 
+//  request data from various URLs.
+// ================================================================================
 // ROUTES
 require('./app/routing/apiRoutes.js')(app); 
 require('./app/routing/htmlRoutes.js')(app);

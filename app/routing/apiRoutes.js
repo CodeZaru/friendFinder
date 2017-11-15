@@ -25,18 +25,44 @@ var friendGroupArrayDS = friendsMW;
 // ROUTING
 // ===============================================================================
 // API GET Requests
-// Below code handles when users "visit" a page.
-// In each of the below cases when a user visits a link
+// Below code handles when users "visit" the survey page and post data and await the response.
+// The POST maps to a url In each of the below cases when a user visits a link
 // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
 // ---------------------------------------------------------------------------
 
 var friendGroup = '/api/friendsMW'; 
 
 //Use express() to access friends api
+//this whole module basically performs analysis of the user submission and the data 
+//in our data source to generate the best answer and output it in the response and 
+//send it to...
+
 module.exports = function (app) {
-	//Using the GET method to grab res data from friends.js holding friends api
+// ---------------------------------------------------------------------------
+//In the server definition we have Route code that points the server here to an
+//actual file (in this case named apiRoutes.js) on an actual directory.  
+//Interestingly, this file points to a set of URl paths that don't actually exist 
+//so they are virtual directories as opposed to real directories, but also as URLs
+//to whatever resource we associate with the URL path. 
+//So the user visits http://~/api/friendsMW by clicking on a hyperlink/button/request or something
+//and we respond to them with data/resources that reside on an actual diretory or
+//whatever we've mapped to it. For the sake of code we've put /api/friendsMW into 
+//a dynamic variable.
+// ================================================================================
+// ROUTER
+// The below points our server to a series of "route" files.
+// These routes give our server a "map" of how to respond when users visit or 
+//request data from various URLs.
+// ================================================================================
+ //so this virtual directory is a path at which we serve up the tableData json housed 
+ //the real diretory address of ../data/tableData and variablized as 'tableData'   
+
+
+
+//Using the GET method to grab res data from friends.js holding friends api.  friendGroup is a dynamic variable 
+//abstraction of URL path '/api/friendsMW' 
 	app.get(friendGroup, function(req, res){
-		res.json(friendGroupArrayDS);//data source from generic variable created in code at top
+		res.json(friendGroupArrayDS);//data source from generic variable created in code at top--an actual file..
 	})
 
 	//Using the POST method to add user answers/choices into friends api
