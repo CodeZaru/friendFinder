@@ -2,8 +2,8 @@
 // GET route to "/api/friends" to get from friends.js 
 
 // Grab the saved data from friends array of friend profile objects
-var friendArr = require('../data/friendsMW.js');
-
+var friendMW = require('../data/friendsMW.js');
+var friendGroupArr = friendMW; 
 //PSUEDO CODE
 //ADD more Variables to handle the generic-ization of route param.
 //ADD the conditional logic that makes various routes into one variable
@@ -15,7 +15,7 @@ var friendGroup = '/api/friendsMW';
 module.exports = function (app) {
 	//Using the GET method to grab res data from friends.js holding friends api
 	app.get(friendGroup, function(req, res){
-		res.json(friendArr);
+		res.json(friendGroupArr);
 	})
 
 	//Using the POST method to add user answers/choices into friends api
@@ -35,12 +35,12 @@ module.exports = function (app) {
 
 		var diffArr = []; //this will be the new .score for the user object in api
 
-		for(var i = 0; i < friendArr.length; i++) {
+		for(var i = 0; i < friendGroupArr.length; i++) {
 			
 			var diffTotal = 0;
 			
-			for(var j = 0; j < friendArr[i].scores.length; j++) {
-				var diffScore = Math.abs(friendArr[i].scores[j] - user.scores[j]);
+			for(var j = 0; j < friendGroupArr[i].scores.length; j++) {
+				var diffScore = Math.abs(friendGroupArr[i].scores[j] - user.scores[j]);
 				diffTotal += diffScore;
 			}
 			diffArr[i] = diffTotal;
@@ -56,10 +56,10 @@ module.exports = function (app) {
 			}
 		}
 
-		friendArr.push(user);
+		friendGroupArr.push(user);
 
 
-		res.json(friendArr[friendIndex]);
+		res.json(friendGroupArr[friendIndex]);
 	})//end POST
 }
 
