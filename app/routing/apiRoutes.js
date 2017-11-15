@@ -4,18 +4,22 @@
 // Grab the saved data from friends array of friend profile objects
 var friendArr = require('../data/friendsMW.js');
 
-//ks
-//var profiles=[];
+//PSUEDO CODE
+//ADD more Variables to handle the generic-ization of route param.
+//ADD the conditional logic that makes various routes into one variable
+//MODULARIZE the actual working code to apply to and maybe name anonymous functions
+//whatever route is passed in the gerenic variable route
+var friendGroup = '/api/friendsMW'; 
 
 //Use express() to access friends api
 module.exports = function (app) {
 	//Using the GET method to grab res data from friends.js holding friends api
-	app.get('/api/friendsMW', function(req, res){
+	app.get(friendGroup, function(req, res){
 		res.json(friendArr);
 	})
 
 	//Using the POST method to add user answers/choices into friends api
-	app.post('/api/friendsMW', function(req, res){
+	app.post(friendGroup, function(req, res){
 
 		var user = req.body;
 
