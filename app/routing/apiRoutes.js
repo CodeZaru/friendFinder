@@ -1,21 +1,42 @@
-// Includes two routes:
-// GET route to "/api/friends" to get from friends.js 
-
-// Grab the saved data from friends array of friend profile objects
-var friendMW = require('../data/friendsMW.js');
-var friendGroupArr = friendMW; 
-//PSUEDO CODE
+//PSUEDO CODE of Next Steps:
 //ADD more Variables to handle the generic-ization of route param.
 //ADD the conditional logic that makes various routes into one variable
 //MODULARIZE the actual working code to apply to and maybe name anonymous functions
 //whatever route is passed in the gerenic variable route
+
+
+// ===============================================================================
+// LOAD DATA
+// We are linking our routes to a series of "data" sources.
+// These data sources hold arrays of information on whatever they might..
+// ===============================================================================
+//require all the sources and name them after the specific source files
+var friendsMW = require('../data/friendsMW.js');
+var friendsWM = require('../data/friendsWM.js');
+var friendsMM = require('../data/friendsMM.js');
+var friendsWW = require('../data/friendsWW.js');
+var friendsP = require('../data/friendsD.js');
+
+//use conditional logic to variablize the selected source into a generic variable for data source
+var friendGroupArrayDS = friendsMW; 
+
+
+// ===============================================================================
+// ROUTING
+// ===============================================================================
+// API GET Requests
+// Below code handles when users "visit" a page.
+// In each of the below cases when a user visits a link
+// (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
+// ---------------------------------------------------------------------------
+
 var friendGroup = '/api/friendsMW'; 
 
 //Use express() to access friends api
 module.exports = function (app) {
 	//Using the GET method to grab res data from friends.js holding friends api
 	app.get(friendGroup, function(req, res){
-		res.json(friendGroupArr);
+		res.json(friendGroupArrayDS);//data source from generic variable created in code at top
 	})
 
 	//Using the POST method to add user answers/choices into friends api
@@ -35,12 +56,12 @@ module.exports = function (app) {
 
 		var diffArr = []; //this will be the new .score for the user object in api
 
-		for(var i = 0; i < friendGroupArr.length; i++) {
+		for(var i = 0; i < friendGroupArrayDS.length; i++) {
 			
 			var diffTotal = 0;
 			
-			for(var j = 0; j < friendGroupArr[i].scores.length; j++) {
-				var diffScore = Math.abs(friendGroupArr[i].scores[j] - user.scores[j]);
+			for(var j = 0; j < friendGroupArrayDS[i].scores.length; j++) {
+				var diffScore = Math.abs(friendGroupArrayDS[i].scores[j] - user.scores[j]);
 				diffTotal += diffScore;
 			}
 			diffArr[i] = diffTotal;
@@ -56,10 +77,10 @@ module.exports = function (app) {
 			}
 		}
 
-		friendGroupArr.push(user);
+		friendGroupArrayDS.push(user);
 
 
-		res.json(friendGroupArr[friendIndex]);
+		res.json(friendGroupArrayDS[friendIndex]);
 	})//end POST
 }
 
