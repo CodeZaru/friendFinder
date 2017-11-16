@@ -3,7 +3,13 @@
 //ADD the conditional logic that makes various routes into one variable
 //MODULARIZE the actual working code to apply to and maybe name anonymous functions
 //whatever route is passed in the gerenic variable route
-
+//When user sumbits request on survey, it will take them to the same API URL
+//regardless, b/c it wants the same answer logic of who is most compatible
+//but the mapping to actual data source will change depening on the value of 
+//their answer to the first Qs.
+//Should probably role the first Q's into the same form so that can use simple jQuery to 
+//get the answer to the first Qs..
+//Add user's Picture and maybe show the answers to the various Qs on modal.
 
 // ===============================================================================
 // LOAD DATA
@@ -15,14 +21,18 @@ var friendsMW = require('../data/friendsMW.js');
 var friendsWM = require('../data/friendsWM.js');
 var friendsMM = require('../data/friendsMM.js');
 var friendsWW = require('../data/friendsWW.js');
-var friendsP = require('../data/friendsD.js');
+var friendsHP = require('../data/friendsD.js');
 
-//use conditional logic to variablize the selected source into a generic variable for data source
+//NEED TO ADD AND USE conditional logic to variablize the selected source into a generic variable for data source
+ 
 var friendGroupArrayDS = friendsMW; 
 
 
 // ===============================================================================
-// ROUTING
+// ROUTING--BASICALLY, I SEND YOU TO THIS URL PATH VIA LINK/BUTTON/FORM,
+// AND I MAP IT TO THE RESOURCE AT THIS DIRECTORY. 
+// GET AND POST METHODS TAKE OUR VIRTUAL URL PATH AS FIRST ARG, AND RETURN
+// THE RESOURCE FROM THE ACTUAL DIRECTORY/RESOURCE TO WHICH WE'VE MAPPED THE URL
 // ===============================================================================
 // API GET Requests
 // Below code handles when users "visit" the survey page and post data and await the response.
