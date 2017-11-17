@@ -14,9 +14,12 @@ $(document).ready(function () {
     var pfAnswer4 = $(".pfAnswer4");
     var pfAnswer5 = $(".pfAnswer5");
 
+    //var personalitySurvey;//KS: what to do with this?
+
 //    var mainTitle = $("#mainTitle");
     var replay = $("#replay"); 
     var start = $("#start"); 
+    var startSurvey = $("#startSurvey"); 
     var results = $(".results"); 
 
 
@@ -38,23 +41,29 @@ var gameObject = {
 
         // Start game on click of start button, hide everything until button is pressed
         startGame: function() {
+            start.hide();
             next.hide();
-            pfAnswer1.hide();
-            pfAnswer2.hide();
-            pfAnswer3.hide();
-            pfAnswer4.hide();
-            pfAnswer5.hide();
-            pfQuestion.hide();
-            replay.hide();
-            $("#startJumbo").show();
-            $("#mainTitle").show();
-            $("#startSurveyJumbo").hide();
+            pfAnswer1.show();
+            pfAnswer2.show();
+            pfAnswer3.show();
+            pfAnswer4.show();
+            pfAnswer5.show();
+            pfQuestion.show();
+            replay.show();
+        $("#friendGroupSelection").show();
+        $("#personalitySurvey").hide();
+//            $("#startJumbo").show();
+//            $("#mainTitle").show();
+//            $("#startSurveyJumbo").hide();
             //On click, start the game, display the questions, and start the timer
-            start.click(function() {
+            //start.click(function() {
+            //startSurvey.click(function() {
+                console.log("startSurvey Button CLICKED!");
+
                gameObject.displayQuestion()
               // gameObject.timer();
 
-           });
+          // });
         },
         // When the an asnwer is picked do this...
     processAnswer: function () {
@@ -84,9 +93,11 @@ var gameObject = {
 
     //Displaying the question
     displayQuestion: function () {
-        $("#startJumbo").hide();
+/*        $("#startJumbo").hide();
         $("#mainTitle").hide();
         $("#startSurveyJumbo").hide();
+        $("personalitySurvey").hide();
+        
         start.hide();
         next.hide();
         pfAnswer1.show();
@@ -95,7 +106,7 @@ var gameObject = {
         pfAnswer4.show();
         pfAnswer5.show();
         pfQuestion.show();
-
+*/
         pfQuestion.text(gameObject.pfQuestions[count]);
         console.log('pfQuestion: ' + count);
         //added a 1 after pfAnswer (below) was orig just pfAnswer
@@ -123,15 +134,17 @@ var gameObject = {
     console.log("SURVEY CALLED!!!")
         $("#startJumbo").hide();
         $("#mainTitle").hide();
-        $("#startSurveyJumbo").show();
+        $("#friendGroupSelection").hide();
+        $("#personalitySurvey").show();
+        //$("#startSurveyJumbo").show();
         start.hide();
         next.hide();
-        pfAnswer1.hide();
-        pfAnswer2.hide();
-        pfAnswer3.hide();
-        pfAnswer4.hide();
-        pfAnswer5.hide();
-        pfQuestion.hide();
+        pfAnswer1.show();
+        pfAnswer2.show();
+        pfAnswer3.show();
+        pfAnswer4.show();
+        pfAnswer5.show();
+        pfQuestion.show();
 
 },
 

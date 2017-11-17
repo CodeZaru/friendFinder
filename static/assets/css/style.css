@@ -40,11 +40,17 @@ h1 {
 }
 
 .question, .font {
-    color: black; font-size: 20px;
+    color: white; 
+    font-size: 20px;
 }
 
 .pfAnswer {
-	display: inline-block; position: relative; padding-bottom: 30px; cursor: pointer; cursor: hand;
+	display: inline-block; 
+    position: relative; 
+    padding-bottom: 30px; 
+    cursor: pointer; 
+    cursor: hand;
+    color: white; 
 }
 .pfAnswer:after {
 	content: '';
@@ -56,7 +62,8 @@ h1 {
 	transition: width .5s ease, background-color .5s ease;
 }
 .pfAnswer:hover:after {
-	width: 12%; background: black;
+	width: 12%; 
+    background: white;
 }
 
 .results {
@@ -79,9 +86,21 @@ h1 {
 /*    background-color: #FF6347;*/
     background-color: #2F2F2F;
    color: white; 
+
 /*    color: blue;*/
 }
 
+.jumbotron h1{
+    font-size:  40px !important;
+    font-family: 'Lobster', sans-serif !important;
+    margin: auto;  
+    text-align: center;  
+}
+
+.jumbotron h2{
+    font-size:  30px !important;
+    font-family: 'Lobster', sans-serif !important;    
+}
 
 .pfQuestionId {
  /*   color: red;*/
