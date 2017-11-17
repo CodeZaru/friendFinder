@@ -14,6 +14,8 @@ $(document).ready(function () {
     var pfAnswer4 = $(".pfAnswer4");
     var pfAnswer5 = $(".pfAnswer5");
 
+    var profileAnswers = [];
+
     //var personalitySurvey;//KS: what to do with this?
 
 //    var mainTitle = $("#mainTitle");
@@ -72,6 +74,8 @@ var gameObject = {
                 selectedAnswer = $(this).text();
 
                 console.log("selectedAnswer is: " + selectedAnswer)
+                profileAnswers.push(selectedAnswer);
+                console.log("profileAnswers: " + profileAnswers);
 
                             //Display the next question
             gameObject.nextQuestion()
