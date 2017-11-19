@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     var count = 0;
 
+    selectFriendGroup = "Man looking for Woman";
+
     var pfQuestions = $(".pfQuestions")
 
     var pfQuestion = $(".pfQuestion"); 
@@ -14,15 +16,16 @@ $(document).ready(function () {
     var pfAnswer4 = $(".pfAnswer4");
     var pfAnswer5 = $(".pfAnswer5");
 
-    var profileAnswers = [];
+    var profileAnswersArr = [];
+    var profileAnswersObj = {};
 
     //var personalitySurvey;//KS: what to do with this?
 
 //    var mainTitle = $("#mainTitle");
-    var replay = $("#replay"); 
-    var start = $("#start"); 
-    var startSurvey = $("#startSurvey"); 
-    var results = $(".results"); 
+var replay = $("#replay"); 
+var start = $("#start"); 
+var startSurvey = $("#startSurvey"); 
+var results = $(".results"); 
 
 
 var gameObject = {
@@ -52,8 +55,8 @@ var gameObject = {
             pfAnswer5.show();
             pfQuestion.show();
             replay.show();
-        $("#friendGroupSelection").show();
-        $("#personalitySurvey").hide();
+            $("#friendGroupSelection").show();
+            $("#personalitySurvey").hide();
 //            $("#startJumbo").show();
 //            $("#mainTitle").show();
 //            $("#startSurveyJumbo").hide();
@@ -62,24 +65,27 @@ var gameObject = {
             //startSurvey.click(function() {
                 console.log("startSurvey Button CLICKED!");
 
-               gameObject.displayQuestion()
+                gameObject.displayQuestion()
               // gameObject.timer();
 
           // });
-        },
+      },
         // When the an asnwer is picked do this...
-    processAnswer: function () {
+        processAnswer: function () {
             pfAnswer.on("click", function () {
                 //seclected answer is this
                 selectedAnswer = $(this).text();
 
                 console.log("selectedAnswer is: " + selectedAnswer)
-                profileAnswers.push(selectedAnswer);
-                console.log("profileAnswers: " + profileAnswers);
+                profileAnswersArr.push(selectedAnswer);
+                console.log("profileAnswersArr: " + profileAnswersArr);
 
+                console.log("profileAnswersArr: " + profileAnswersArr[0]);
+                selectFriendGroup = profileAnswersArr[0];
+console.log("selectFriendGroup: " + selectFriendGroup)
                             //Display the next question
-            gameObject.nextQuestion()
-         
+                            gameObject.nextQuestion()
+
 //after selecting the first three questions, 
 //display the remaining the reamining 7 personality Qs
 //and then find the match
@@ -88,7 +94,7 @@ var gameObject = {
 //all smokers end up a date with an oxygen station
 //Pets are al dogs broken out by size, function, hypo allergenic etc
 //
-                    
+
            })//pfAnswer.onclick end
 
      },//processAnswer end
@@ -110,7 +116,7 @@ var gameObject = {
         pfAnswer4.show();
         pfAnswer5.show();
         pfQuestion.show();
-*/
+        */
         pfQuestion.text(gameObject.pfQuestions[count]);
         console.log('pfQuestion: ' + count);
         //added a 1 after pfAnswer (below) was orig just pfAnswer
@@ -131,15 +137,16 @@ var gameObject = {
         console.log('pfAnswer5: ' + count);
         results.empty();
         //$("#timer").show();
-        },
+    },
 
 //Survey: displaySurvey
-    displaySurvey: function(){
+displaySurvey: function(){
     console.log("SURVEY CALLED!!!")
-        $("#startJumbo").hide();
-        $("#mainTitle").hide();
-        $("#friendGroupSelection").hide();
-        $("#personalitySurvey").show();
+setTimeout(console.log("profileAnswersObj: " + JSON.stringify(profileAnswersObj)), 3000);
+    $("#startJumbo").hide();
+    $("#mainTitle").hide();
+    $("#friendGroupSelection").hide();
+    $("#personalitySurvey").show();
         //$("#startSurveyJumbo").show();
         start.hide();
         next.hide();
@@ -150,7 +157,7 @@ var gameObject = {
         pfAnswer5.show();
         pfQuestion.show();
 
-},
+    },
 
 
     //Next Question
@@ -159,18 +166,30 @@ var gameObject = {
             if (count < 9) {
                count++;
                if (count < 3) {
-               gameObject.displayQuestion();
-           } else {
+                   gameObject.displayQuestion();
+               } else {
                 gameObject.displaySurvey();
-           }
+                gameObject.hiddenProfileArrayToObj(profileAnswersArr);
+                $('#hiddenProfileObj').val(JSON.stringify(profileAnswersObj)); //store array
+            }
 
-           }
+        }
             //If count is greater then show Final Screen
             else {
               gameObject.endScreen();
           }
 
       },
+
+      hiddenProfileArrayToObj: function(arr) {
+          //var profileAnswersObj = {};
+          console.log("toObj CALLED!");
+          for (var i = 0; i < arr.length; ++i)
+            profileAnswersObj[i] = arr[i];
+          console.log("profileAnswersObj 1" + JSON.stringify(profileAnswersObj));
+        return profileAnswersObj;
+    },
+
 
     //End Screen
     endScreen: function() {
@@ -184,7 +203,7 @@ var gameObject = {
         next.hide();
         //Run the restart function
         gameObject.restart();
-        },
+    },
     //Restart Function
     restart: function() {
             //On button click ..
@@ -194,14 +213,16 @@ var gameObject = {
                 correctAnswers = 0;
                 wrongAnswers = 0;
                // gameObject.timer();
-                gameObject.displayQuestion();
-            });
+               gameObject.displayQuestion();
+           });
         }
 
-}
+    }
 
-gameObject.startGame();
-gameObject.processAnswer();
+    gameObject.startGame();
+    gameObject.processAnswer();
 
 
 });
+
+//exports.selectFriendGroup = profileAnswersArr[0];

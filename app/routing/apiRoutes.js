@@ -10,6 +10,9 @@
 //Should probably role the first Q's into the same form so that can use simple jQuery to 
 //get the answer to the first Qs..
 //Add user's Picture and maybe show the answers to the various Qs on modal.
+//var selectFriendGroup = require('./static/assets/javascript/game.js');
+//var selectFriendGroup = require("/assets/javascript/test.js");
+
 
 // ===============================================================================
 // LOAD DATA
@@ -27,6 +30,7 @@ var friendsHP = require('../data/friendsD.js');
  
 var friendGroupArrayDS = friendsMW; 
 
+console.log("selectFriendGroup (apiRoutes.js 30): " );
 
 // ===============================================================================
 // ROUTING--BASICALLY, I SEND YOU TO THIS URL PATH VIA LINK/BUTTON/FORM,
@@ -69,13 +73,13 @@ module.exports = function (app) {
 
 
 
-//Using the GET method to grab res data from friends.js holding friends api.  friendGroup is a dynamic variable 
-//abstraction of URL path '/api/friendsMW' 
+//Using the GET method to grab res data from friends.js holding friends data.  
+//friendGroup is a dynamic variable abstraction of URL path '/api/friendsMW' 
 	app.get(friendGroup, function(req, res){
 		res.json(friendGroupArrayDS);//data source from generic variable created in code at top--an actual file..
 	})
 
-	//Using the POST method to add user answers/choices into friends api
+	//Using the POST method of Express server instance to add user answers/choices into friends api
 	app.post(friendGroup, function(req, res){
 
 		var user = req.body;

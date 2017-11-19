@@ -46,6 +46,12 @@
 
 	</div>
 
+
+<div class="container" id="hiddenProfileObj">
+ <input type="hidden" name="hiddenProfileObj"/>
+</div>
+
+
 <div class="container" id="personalitySurvey">
 
 
@@ -154,7 +160,7 @@
 
 			<h4><strong>Question 7:</strong></h4>
 			<fieldset class="form-group">
-				<label for="questionSeven">Religion does NOT rule my life (the stronger you agree the more spiritually flexible you are).</label>
+				<label for="questionSeven">Religion does NOT rule my life (the stronger you agree the more spiritually tolerant/flexible you are).</label>
 				<br>
 				<div class="col-md-4">
 					<select class="form-control" id="questionSeven" name="scores[6]">
@@ -248,8 +254,16 @@
 <script type="text/javascript" src="/assets/javascript/game.js"></script>
 
 <script type="text/javascript">
+
+selectFriendGroup = "Man looking for Woman";
+console.log("selectFriendGroup>>>: " + selectFriendGroup);
+setTimeout(function() {console.log("selectFriendGroup>>>: " + selectFriendGroup)},5000);
+//console.log("selectFriendGroup: " + selectFriendGroup);
+
 	$('#submit').on("click", function() {
+		console.log("hiddenProfileObj: " + JSON.stringify(hiddenProfileObj));
 		var userInput = {
+			hiddenProfileObj: $('#hiddenProfileObj').val().trim(),
 			name: $('#name').val().trim(),
 			photo: $('#photo').val().trim(),
 			scores: [$('#questionOne').val().trim(), $('#questionTwo').val().trim(), $('#questionThree').val().trim(), $('#questionFour').val().trim(), $('#questionFive').val().trim(), $('#questionSix').val().trim(), $('#questionSeven').val().trim(), $('#questionEight').val().trim(), $('#questionNine').val().trim(), $('#questionTen').val().trim()]
@@ -258,6 +272,9 @@
 //when the http method is a POST (like the .post below, in addition it provides userInput variable
 //and binds the "data" returned to the various elements of the modal window.)
 		var currentURL = window.location.origin;
+//the .post below again goes to the apiRoutes.js file (virtual path to resources),
+//provides the userInput, and with the object data returned, it puts the object properties of
+//name and photo into the modal elements of #matchName and #matchImage
 		$.post(currentURL + '/api/friendsMW', userInput, function(data) {
 			$("#matchName").text(data.name);
 			$("#matchImage").attr("src", data.photo);
