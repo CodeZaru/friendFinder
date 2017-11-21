@@ -3,7 +3,7 @@
 var friends = [ 
 {
 	"name" : "F1",
-	"photo" : "https://scdailymakeover.files.wordpress.com/2015/07/news-sofia-vergara.jpg?w=610&h=773",
+	"photo" : "https://visualioner.files.wordpress.com/2013/10/koda-kumi-calender-5.jpg",
 	"scores" : [1,1,1,1,1,1,1,1,1,1]
 }, {
 	"name" : "F2",

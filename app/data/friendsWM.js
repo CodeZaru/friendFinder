@@ -1,16 +1,16 @@
 //Friend list information; Friends API
 
 var friends = [ {
-	"name" : "F1",
-	"photo" : "https://media1.popsugar-assets.com/files/thumbor/wW6339B_N7MugJmadGRXTVYg5vY/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2016/09/06/024/n/1922398/be4b94fdd833aadf_GettyImages-53240674/i/Pon-de-Replay-Rihanna.jpg",
+	"name" : "M1",
+	"photo" : "http://www.cheatsheet.com/wp-content/uploads/2016/03/Jason-Statham-in-Lock-Stock-and-Two-Smoking-Barrels.jpg",
 	"scores" : [1,1,1,1,1,1,1,1,1,1]
 }, {
-	"name" : "F2",
-	"photo" : "http://www.billboard.com/files/media/shakira-portrait-sesssion-2015-billboard-1548.jpg",
+	"name" : "M2",
+	"photo" : "https://cdn.vox-cdn.com/thumbor/mMdLrcx1tpzXz6RDPNHCWWapWgs=/0x0:3586x2689/1200x800/filters:focal(1433x927:2005x1499)/cdn.vox-cdn.com/uploads/chorus_image/image/56118151/usa_today_10159234.0.jpg",
 	"scores" : [3,3,3,3,3,3,3,3,3,3]
 }, {
-	"name" : "F3",
-	"photo" : "https://scdailymakeover.files.wordpress.com/2015/07/news-sofia-vergara.jpg?w=610&h=773",
+	"name" : "M3",
+	"photo" : "https://media.gq.com/photos/55a7cc094e6e4c4f31a46d7e/16:9/pass/trevor-noah-gq-01.jpg",
 	"scores" : [5,5,5,5,5,5,5,5,5,5]
 }];
 

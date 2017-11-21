@@ -2,7 +2,15 @@ $(document).ready(function () {
 
     var count = 0;
 
-    selectFriendGroup = "Man looking for Woman";
+//NOTE: set "selectFriendGroup" as Global Variable by excluding Var from declaration
+//but had to set it in two different Javascript files: game.js 
+//and survey.html--javascript piece, so that I could pass variable from 
+//my static dir to my route api dir.
+
+   //GLOBAL.selectFriendGroup;//Gllobal that exists on: 
+    //games.js,  apiRoutes.js and survey.html--which is selected first and how do we make it communicate with all..  I think game.js gets set first, and then survey and apiRoutes--not sure which goes first..
+
+
 
     var pfQuestions = $(".pfQuestions")
 
@@ -57,19 +65,11 @@ var gameObject = {
             replay.show();
             $("#friendGroupSelection").show();
             $("#personalitySurvey").hide();
-//            $("#startJumbo").show();
-//            $("#mainTitle").show();
-//            $("#startSurveyJumbo").hide();
-            //On click, start the game, display the questions, and start the timer
-            //start.click(function() {
-            //startSurvey.click(function() {
-                console.log("startSurvey Button CLICKED!");
+            console.log("startSurvey Button CLICKED!");
 
-                gameObject.displayQuestion()
-              // gameObject.timer();
+            gameObject.displayQuestion()
 
-          // });
-      },
+        },
         // When the an asnwer is picked do this...
         processAnswer: function () {
             pfAnswer.on("click", function () {
@@ -81,8 +81,16 @@ var gameObject = {
                 console.log("profileAnswersArr: " + profileAnswersArr);
 
                 console.log("profileAnswersArr: " + profileAnswersArr[0]);
-                selectFriendGroup = profileAnswersArr[0];
-console.log("selectFriendGroup: " + selectFriendGroup)
+            //Made this a Global variable: global.selectFriendGroup 
+            selectFriendGroup = 'Man looking for Woman';
+              //GLOBAL.selectFriendGroup = 'Man looking for Woman';
+            
+            /*  module.exports = {
+                selectFriendGroup: 'Man looking for Woman';
+              };*/
+
+            // global.selectFriendGroup = profileAnswersArr[0];
+            console.log("selectFriendGroup: " + selectFriendGroup)
                             //Display the next question
                             gameObject.nextQuestion()
 
@@ -142,7 +150,7 @@ console.log("selectFriendGroup: " + selectFriendGroup)
 //Survey: displaySurvey
 displaySurvey: function(){
     console.log("SURVEY CALLED!!!")
-setTimeout(console.log("profileAnswersObj: " + JSON.stringify(profileAnswersObj)), 3000);
+    setTimeout(console.log("profileAnswersObj: " + JSON.stringify(profileAnswersObj)), 3000);
     $("#startJumbo").hide();
     $("#mainTitle").hide();
     $("#friendGroupSelection").hide();
@@ -164,16 +172,26 @@ setTimeout(console.log("profileAnswersObj: " + JSON.stringify(profileAnswersObj)
     nextQuestion: function () {
             // If the count of questions is less than 9, increase count and display Question, Set timer to 30 and run timer
             if (count < 9) {
-               count++;
-               if (count < 3) {
-                   gameObject.displayQuestion();
-               } else {
+             count++;
+             if (count < 3) {
+               /* if (count = 1){
+                  exports = JSON.stringify(profileAnswersObj[0]);  
+                }*/
+                gameObject.displayQuestion();
+                
+             } else {
                 gameObject.displaySurvey();
                 gameObject.hiddenProfileArrayToObj(profileAnswersArr);
-                $('#hiddenProfileObj').val(JSON.stringify(profileAnswersObj)); //store array
-            }
+                //gameObject.WTF(profileAnswersObj[0]);
+                var friendGroup333 = gameObject.WTF(profileAnswersObj[0]);
+                console.log("friendGroup333: "+ friendGroup333);
+                $('#hiddenProfileObj').val(JSON.stringify(profileAnswersObj[0])); //store array
+                $('#hiddenProfileObj2').val(friendGroup333); //store param           
 
-        }
+
+            }
+}
+        
             //If count is greater then show Final Screen
             else {
               gameObject.endScreen();
@@ -181,14 +199,43 @@ setTimeout(console.log("profileAnswersObj: " + JSON.stringify(profileAnswersObj)
 
       },
 
+    
       hiddenProfileArrayToObj: function(arr) {
           //var profileAnswersObj = {};
           console.log("toObj CALLED!");
           for (var i = 0; i < arr.length; ++i)
             profileAnswersObj[i] = arr[i];
-          console.log("profileAnswersObj 1" + JSON.stringify(profileAnswersObj));
-        return profileAnswersObj;
-    },
+        console.log("profileAnswersObj 1" + JSON.stringify(profileAnswersObj));
+        console.log("profileAnswersObj 2" + JSON.stringify(profileAnswersObj[0]));
+           return profileAnswersObj;
+    
+},
+
+      WTF: function(selectFriendGroup) {
+        var friendGroup = '5' 
+    if (friendGroup = '5') {
+    if(selectFriendGroup == 'Man looking for Woman') {
+      friendGroup = '/api/friendsMW';
+    }
+    else if (selectFriendGroup == 'Woman looking for Man') {
+      friendGroup = '/api/friendsWM';
+    }
+    if (selectFriendGroup == 'Man looking for Man') {
+      friendGroup = '/api/friendsMM';
+    }
+    else if (selectFriendGroup == 'Woman looking for Woman') {
+      friendGroup = '/api/friendsWW';
+    }    
+    else if (selectFriendGroup == 'Human looking for Pet Dog') {
+      friendGroup = '/api/friendsD';
+    };
+}
+else {
+  console.log("\nThat's okay, come again when you are more sure.\n");
+};
+ console.log("friendGroup 222" + friendGroup);
+return friendGroup;
+},
 
 
     //End Screen

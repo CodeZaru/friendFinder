@@ -2,15 +2,15 @@
 
 var friends = [ {
 	"name" : "F1",
-	"photo" : "https://media1.popsugar-assets.com/files/thumbor/wW6339B_N7MugJmadGRXTVYg5vY/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2016/09/06/024/n/1922398/be4b94fdd833aadf_GettyImages-53240674/i/Pon-de-Replay-Rihanna.jpg",
+	"photo" : "http://www.trbimg.com/img-570e8524/turbine/sf-wanda-sykes-interview-hard-rock-live-hollywood-20160413",
 	"scores" : [1,1,1,1,1,1,1,1,1,1]
 }, {
 	"name" : "F2",
-	"photo" : "http://www.billboard.com/files/media/shakira-portrait-sesssion-2015-billboard-1548.jpg",
+	"photo" : "https://i.enkivillage.org/vkGm_aoscZDPTYLW-D_q8bqRPEI=//images/2d446419c2beb38ace3f006d34e3b7bc.jpg",
 	"scores" : [3,3,3,3,3,3,3,3,3,3]
 }, {
 	"name" : "F3",
-	"photo" : "https://scdailymakeover.files.wordpress.com/2015/07/news-sofia-vergara.jpg?w=610&h=773",
+	"photo" : "https://static1.squarespace.com/static/50bc9543e4b05b20d2df56cf/t/53207596e4b094aec255b26c/1394636183415/",
 	"scores" : [5,5,5,5,5,5,5,5,5,5]
 }];
 

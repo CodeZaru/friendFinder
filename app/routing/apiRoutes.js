@@ -1,3 +1,11 @@
+/*
+
+OK---NOW I KNOW... DO THE LOGIC IN THE GAME.JS FILE TO GET THE STANDARD FILE LOGIC
+"friendGroupArrayDS" AND THEN SEND IT OVER AS A HIDDEN FIELD...  SO A LOT OF THIS
+CODE CAN MOVE TO THERE AND ALL THIS NEEDS IS TO HAVE THE POST MODAL SEND IT OVER IN THE USER INPUT..
+
+
+*/
 //PSUEDO CODE of Next Steps:
 //ADD more Variables to handle the generic-ization of route param.
 //ADD the conditional logic that makes various routes into one variable
@@ -10,8 +18,11 @@
 //Should probably role the first Q's into the same form so that can use simple jQuery to 
 //get the answer to the first Qs..
 //Add user's Picture and maybe show the answers to the various Qs on modal.
-//var selectFriendGroup = require('./static/assets/javascript/game.js');
-//var selectFriendGroup = require("/assets/javascript/test.js");
+
+//NOTE: set "selectFriendGroup" as Global Variable by excluding Var from declaration
+//but had to set it in two different Javascript files: game.js 
+//and survey.html--javascript piece, so that I could pass variable from 
+//my static dir to my route api dir.
 
 
 // ===============================================================================
@@ -29,8 +40,36 @@ var friendsHP = require('../data/friendsD.js');
 //NEED TO ADD AND USE conditional logic to variablize the selected source into a generic variable for data source
  
 var friendGroupArrayDS = friendsMW; 
+var friendGroup;
 
-console.log("selectFriendGroup (apiRoutes.js 30): " );
+selectFriendGroup = "Man looking for Woman";//Gllobal that exists on:
+//games.js,  apiRoutes.js and survey.html--which is selected first and how do we make it communicate with all..  then survey and apiRoutes--not sure which goes first..
+console.log("apiRoutes.js selectFriendGroup>>>: " + selectFriendGroup);
+
+
+    if (selectFriendGroup==='Man looking for Woman') {
+      friendGroup = '/api/friendsMW';
+      friendGroupArrayDS = friendsMW;
+    }
+    else if (selectFriendGroup==='Woman looking for Man') {
+      friendGroup = '/api/friendsWM';
+      friendGroupArrayDS = friendsWM;
+    }
+    if (selectFriendGroup==='Man looking for Man') {
+      friendGroup = '/api/friendsMM';
+      friendGroupArrayDS = friendsMM;
+    }
+    else if (selectFriendGroup==='Woman looking for Woman') {
+      friendGroup = '/api/friendsWW';
+      friendGroupArrayDS = friendsWW;
+    }    
+    else if (selectFriendGroup==='Human looking for Pet Dog') {
+      friendGroup = '/api/friendsD';
+      friendGroupArrayDS = friendsHP;
+    }    
+
+setTimeout(function() {console.log("apiRoutes.js delayed selectFriendGroup>>>: " + selectFriendGroup)},5000);
+
 
 // ===============================================================================
 // ROUTING--BASICALLY, I SEND YOU TO THIS URL PATH VIA LINK/BUTTON/FORM,
@@ -44,7 +83,7 @@ console.log("selectFriendGroup (apiRoutes.js 30): " );
 // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
 // ---------------------------------------------------------------------------
 
-var friendGroup = '/api/friendsMW'; 
+//var friendGroup = '/api/friendsMW'; 
 
 //Use express() to access friends api
 //this whole module basically performs analysis of the user submission and the data 
